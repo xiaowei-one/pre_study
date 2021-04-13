@@ -20,26 +20,23 @@
 
 <body>
     <div id="app">
-        <p>origin: {{message}}</p>
-        <p>reversed:{{reverseMessage}}</p>
-        <input type="text" v-model="message">
+        <p>Ask a yes/no question:
+            <input type="text" v-model="question">
+        </p>
+        <p>{{answer}}</p>
     </div>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                message: "blueSky"
+                question: "",
+                answer: "I cannot give you an answer"
             },
-            computed: {
-                reverseMessage: {
-                    get: function () {
-                        return this.message.split('').reverse().join('')
-                    },
-                    set: function (newValue) {
-                        this.message = "tree"
-                    }
+            watch: {
+                question: function () {
+                    this.answer = "Waiting for you to stop type..."
                 }
-            }
+            },
 
         });
     </script>
