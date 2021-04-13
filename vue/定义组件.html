@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #app {
+            background-color: #ffc0cb;
+        }
+
+        span {
+            background-color: #ffc0cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件也需要在vue实例中使用 -->
+        <first-component v-for="(item,index) in dish" v-bind:todo="item" v-bind:key="index"></first-component>
+    </div>
+    <!-- 在外面的组件是无效的 -->
+    <first-component></first-component>
+    <script>
+        Vue.component('first-component', {
+            //props:用来接收属性咧列表,通过v-bind绑定
+            props: ["todo"],
+            template: "<div>{{todo}}</div>"
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                dish: ["flower1", "flower2", "flower3"]
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>
