@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #app {
+            background-color: #ffc0cb;
+        }
+
+        .love {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+
+        .myLove {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+
+        span {
+            background-color: #ffc0cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="isLove">
+            <label>Username</label>
+            <input type="text" placeholder="Enter your Username">
+        </template>
+        <template v-else>
+            <label>Password</label>
+            <input type="text" placeholder="Enter your Password">
+        </template>
+        <button @click="isLove = !isLove">{{isChange()}}</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isLove: true,
+                username: "账户",
+                password: "密码",
+            },
+            compted: {
+                isChange: function () {
+                    if (isLove) {
+                        return this.username
+                    } else {
+                        return this.password
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
