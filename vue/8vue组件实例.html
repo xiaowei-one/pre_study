@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        p {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #ffc0cb;
+            margin: 10px;
+        }
+
+        div {
+            padding: 10px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{count}}</p>
+        <button-counter v-for="post in posts" @text="count++" :uname="post">
+            天空龙
+        </button-counter>
+    </div>
+    <script>
+        Vue.component("button-counter", {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            props: ["uname"],
+            template: `
+                <div>
+                    <slot></slot>
+                    <p>{{uname}}</p>
+                    <button v-on:click='$emit("text")'>{{count}}</button>
+                </div>
+            `
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                posts: ["巨神兵", "拉的翼神", "欧利西斯"],
+                count: 0
+            },
+            methods: {
+                greet: function (message, e) {
+                    console.log(message)
+                    console.log(e)
+                    this.count += 2
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
