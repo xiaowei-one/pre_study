@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        p {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #ffc0cb;
+            margin: 10px;
+        }
+
+        div {
+            padding: 10px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p @click.>{{count}}</p>
+        <p>{{count}}</p>
+        <textarea>{{count}}</textarea>
+        <button @click="count++">count</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            },
+            methods: {
+                greet: function (message, e) {
+                    console.log(message)
+                    console.log(e)
+                    this.count += 2
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
